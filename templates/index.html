@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #808080;
+            color: #ffffff;
+        }
+        .container {
+            background: white;
+            padding: 50px; /* Increased padding by 25% */
+            border-radius: 20px; /* More rounded corners for the container */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            color: #808080;
+            width: 62.5%; /* Increased width by 25% */
+            max-width: 625px; /* Increased max-width by 25% */
+        }
+        input[type="text"] {
+            padding: 12.5px; /* Increased padding by 25% */
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 20px; /* Rounded corners for the input text box */
+            margin-bottom: 12.5px; /* Increased margin-bottom by 25% */
+            outline: none; /* Remove outline on focus */
+            transition: border-color 0.3s; /* Smooth transition for border color on focus */
+            font-size: 1.25em; /* Increased font size by 25% */
+        }
+        input[type="text"]:focus {
+            border-color: #dc3545; /* Change border color on focus */
+        }
+        button {
+            padding: 12.5px 25px; /* Increased padding by 25% */
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 20px; /* Rounded corners for buttons */
+            cursor: pointer;
+            font-size: 1.25em; /* Increased font size by 25% */
+        }
+        button:hover {
+            background-color: #c82333;
+        }
+        .back-button {
+            background-color: #6c757d;
+        }
+        .back-button:hover {
+            background-color: #5a6268;
+        }
+        h1 {
+            font-size: 2.5em; /* Increased font size by 25% */
+            margin-bottom: 20px; /* Increased margin-bottom for better spacing */
+        }
+        p {
+            font-size: 1.25em; /* Increased font size by 25% */
+            margin: 10px 0; /* Increased margin for better spacing */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Oh So What's The Weather?</h1>
+        {% if weather %}
+            <p>The weather in {{ city_name }} is: {{ weather }}</p>
+            <p>The temperature in {{ city_name }} is: {{ temperature }}°F degrees</p>
+            <form method="get" action="/">
+                <button type="submit" class="back-button">Let's Go Back</button>
+            </form>
+        {% else %}
+            <form method="post">
+                <input type="text" name="city" placeholder="Enter city" required>
+                <button type="submit">Show Me The Weather!</button>
+            </form>
+        {% endif %}
+    </div>
+</body>
+</html>
